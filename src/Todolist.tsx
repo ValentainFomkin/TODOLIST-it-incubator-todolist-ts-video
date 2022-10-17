@@ -1,10 +1,5 @@
 import React from "react";
 
-function sum(a: number, b: number) {
-    alert(a + b)
-}
-
-// sum(12,14)
 
 export type TaskType = {
     id: number
@@ -26,11 +21,13 @@ export function Todolist(props: PropsType) { // props = { title: 'What to learn'
                 <button>+</button>
             </div>
             <ul>
-                <li><input type="checkbox" checked={props.tasks[0].isDone}/><span>{props.tasks[0].title}</span></li>
-                <li><input type="checkbox" checked={props.tasks[1].isDone}/><span>{props.tasks[1].title}</span></li>
-                <li><input type="checkbox" checked={props.tasks[2].isDone}/><span>{props.tasks[2].title}</span></li>
-
-
+                {
+                    props.tasks.map((t) => {
+                        return <li><input type="checkbox" checked={t.isDone}/>
+                            <span>{t.title}</span>
+                        </li>
+                    })
+                }
             </ul>
             <div>
                 <button>All</button>
